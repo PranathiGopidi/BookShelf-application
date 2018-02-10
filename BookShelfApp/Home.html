@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="script.js"></script>
+    <style type="text/css">
+        h4 {
+            text-align: center;
+            color: Red;
+            font-weight: bolder;
+
+        }
+        h3 {
+            font-family: Arial;
+            font-weight: bolder;
+            color: blue;
+            text-align: center;
+        }
+        th{
+            color: maroon;
+        }
+        td {
+            color: black;
+        }
+        p {
+            text-align: center;
+        }
+        body{
+            background-repeat: no-repeat;
+            background-position-x: center;
+        }
+        </style>
+</head>
+<body class="container" ng-app="myApp" ng-controller="BooksCtrl"   background="img1.jpg">
+<table class="table table-bordered">
+    <tr><th colspan="7"><h3>BOOKS</h3></th></tr>
+    <tr>
+        <th>Select</th>
+        <th>Book Name</th>
+        <th>ISBN</th>
+        <th>Author</th>
+        <th>Year Published</th>
+        <th>Read</th>
+        <th>Update</th>
+    </tr>
+
+    <tr ng-repeat="x in BooksList" >
+        <td><input type="checkbox" ng-model="x.done"/></td>
+        <td>{{ x.BooksText1 }}</td>
+        <td>{{ x.BooksText2 }}</td>
+        <td>{{ x.BooksText3 }}</td>
+        <td>{{ x.BooksText4 }}</td>
+        <td><a href="{{x.BooksText5}}"/><button class="btn btn-info" data-toggle="tooltip" title="Read"><span class="glyphicon glyphicon-book"></span></button></td>
+        <td><a href="#" input type="button" class="btn btn-info" ng-click="edit(x)" data-toggle="modal" data-target="#myUpdate"><span class="glyphicon glyphicon-edit"></span></a></td>
+
+
+    </tr>
+</table>
+<div align="center">
+    <input type=button class = "btn btn-success" value="Add Book" data-toggle="modal" data-target="#myModal"/>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Give Book Details</h4>
+                </div>
+                <div class="modal-body">
+                    <form ng-submit="add()">
+                        <table align="center">
+                            <tr><td>Book Name:*</td><td> <input type="text" ng-model="BooksInput1" size="50" placeholder="Book Name"></td></tr>
+                            <tr><td>ISBN:</td><td><input type="text" ng-model="BooksInput2" size="50" placeholder="ISBN"></td></tr>
+                            <tr><td>Author Name:*</td><td><input type="text" ng-model="BooksInput3" size="50" placeholder="Author Name"></td></tr>
+                            <tr><td>Year Published:*</td><td><input type="text" ng-model="BooksInput4" size="50" placeholder="Year Published"></td></tr>
+                            <tr><td>Enter the URL:*</td><td><input type="text" ng-model="BooksInput5" size="50" placeholder="URL"></td></tr>
+
+                            <!-- <tr><td>Book Name:*</td><td><input type="text" label="Book Name"/></td></tr>
+                             <tr><td>ISBN :</td><td><input type="text" label="ISBN"/></td></tr>
+                             <tr><td>Author Name:*</td><td><input type="text" label="Author Name"/></td></tr>
+                             <tr><td>Year Published:</td><td><input type="text" label="Year Published"/></td></tr>-->
+                        </table>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-success" data-dismiss="modal"ng-click="add()" value="Add" />
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <input type=button class = "btn btn-danger" value="Delete Book" ng-click="delete()"/>
+
+    <div class="modal fade" id="myUpdate" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Update Book Details</h4>
+                </div>
+                <div class="modal-body">
+                    <form ng-submit="save(current)">
+                        <table align="center">
+                            <tr><td>Book Name:*</td><td> <input type="text" id="bookname" ng-model="current.BooksText1" placeholder="Book Name" value="{{current.BooksText1}}"/></td></tr>
+                            <tr><td>ISBN:</td><td><input type="text" id="ISBN" ng-model="current.BooksText2" placeholder="ISBN" value="{{current.BooksText2}}"/></td></tr>
+                            <tr><td>Author Name:*</td><td><input type="text" id="Author" ng-model="current.BooksText3" placeholder="Author Name" value="{{current.BooksText3}}"/></td></tr>
+                            <tr><td>Year Published:*</td><td><input type="text" id="Year" ng-model="current.BooksText4" placeholder="Year Published" value="{{current.BooksText4}}"/></td></tr>
+
+                            <!-- <tr><td>Book Name:*</td><td><input type="text" label="Book Name"/></td></tr>
+                             <tr><td>ISBN :</td><td><input type="text" label="ISBN"/></td></tr>
+                             <tr><td>Author Name:*</td><td><input type="text" label="Author Name"/></td></tr>
+                             <tr><td>Year Published:</td><td><input type="text" label="Year Published"/></td></tr>-->
+                        </table>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-success" data-dismiss="modal"ng-click="save(current)" value="Save" />
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+    <!-- <div style="margin-top: 4%">
+     <input type="text" id="bookname" ng-model="current.BooksText1" value="{{current.BooksText1}}"/>
+     <input type="text" id="ISBN" ng-model="current.BooksText2" value="{{current.BooksText2}}"/>
+     <input type="text" id="Author" ng-model="current.BooksText3" value="{{current.BooksText3}}"/>
+     <input type="text" id="Year" ng-model="current.BooksText4" value="{{current.BooksText4}}"/></div>
+     <button style="margin-top: 2%" ng-click="save(current)">Save</button>
+ </div>-->
+    <!--<img src="img1.jpg" alt="Mountain View" width="500" height="377">-->
+
+
+</body>
+</html>

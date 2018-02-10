@@ -1,0 +1,18 @@
+{
+  "name": "learnhtml",
+  "version": "1.0.0",
+  "description": "bookshelfapp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pranathi",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "angular": "^1.6.9",
+    "angular-local-storage": "^0.7.1",
+    "get-dependencies": "^1.1.0",
+    "node": "^9.5.0"
+  }
+}
