@@ -19,7 +19,7 @@ myApp.controller('BooksCtrl', function($scope) {
         YearPublished: '2000',
         ReadBooks: 'http://harrypotter.scholastic.com/excerpts/HP_Book4_Chapter_Excerpt.pdf'}];
     $scope.editIndex = false;
-    $scope.addBook = function() {
+    $scope.add = function() {
         if( $scope.editIndex === false) {
             $scope.BooksList.push({
                 BookName: $scope.BookName,
