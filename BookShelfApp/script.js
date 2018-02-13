@@ -53,7 +53,7 @@ myApp.controller('BooksCtrl', function($scope) {
 
     };
 
-    $scope.remove = function() {
+    $scope.delete = function() {
         var oldList = $scope.BooksList;
         $scope.BooksList = [];
         angular.forEach(oldList, function(x) {
