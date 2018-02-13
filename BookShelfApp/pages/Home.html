@@ -1,4 +1,32 @@
 <div class="container text-center" ng-controller="BooksCtrl">
+    <table class="table table-bordered" style="margin-top: 2%">
+        <tr><th colspan="7"><h3 style="text-align: center">BOOKS</h3></th></tr>
+        <tr>
+            <th>Select</th>
+            <th>Book Name</th>
+            <th>ISBN</th>
+            <th>Author</th>
+            <th>Year Published</th>
+            <th>Read</th>
+            <th>Update</th>
+        </tr>
+
+        <tr ng-repeat="x in BooksList" >
+            <td><input type="checkbox" ng-model="x.done"/></td>
+            <td>{{ x.BookName }}</td>
+            <td>{{ x.ISBN }}</td>
+            <td>{{ x.AuthorName }}</td>
+            <td>{{ x.YearPublished }}</td>
+            <td><a href="{{x.ReadBooks}}"/><button class="btn btn-info" data-toggle="tooltip" title="Read"><span class="glyphicon glyphicon-book"></span></button></td>
+            <td><button class="btn btn-primary btn-md" ng-click="edit($index)">
+                <span class="glyphicon glyphicon-edit"></span>
+            </button>
+            </td>
+
+
+        </tr>
+    </table>
+    <p><input type=button class = "btn btn-danger" value="Delete" ng-click="delete()"/></p>
     <form>
         <table align="center">
             <tr><td>Book Name:*</td><td> <input type="text" ng-model="BookName" size="50" placeholder="Book Name"></td></tr>
@@ -7,36 +35,8 @@
             <tr><td>Year Published:*</td><td><input type="text" ng-model="YearPublished" size="50" placeholder="Year Published"></td></tr>
             <tr><td>Enter the URL:*</td><td><input type="text" ng-model="ReadBooks" size="50" placeholder="URL"></td></tr>
         </table>
-        <input type="submit" class="btn btn-success" data-dismiss="modal"ng-click="addBook()" value="Add" />
+        <input type="submit" class="btn btn-success" data-dismiss="modal"ng-click="add()" value="Add Book" />
     </form>
-            <table class="table table-bordered" style="margin-top: 2%">
-          <tr><th colspan="7"><h3 style="text-align: center">BOOKS</h3></th></tr>
-                <tr>
-                    <th>Select</th>
-                    <th>Book Name</th>
-                    <th>ISBN</th>
-                    <th>Author</th>
-                    <th>Year Published</th>
-                    <th>Read</th>
-                    <th>Update</th>
-                </tr>
 
-            <tr ng-repeat="x in BooksList" >
-                <td><input type="checkbox" ng-model="x.done"/></td>
-                <td>{{ x.BookName }}</td>
-                <td>{{ x.ISBN }}</td>
-                <td>{{ x.AuthorName }}</td>
-                <td>{{ x.YearPublished }}</td>
-                <td><a href="{{x.ReadBooks}}"/><button class="btn btn-info" data-toggle="tooltip" title="Read"><span class="glyphicon glyphicon-book"></span></button></td>
-                <td><button class="btn btn-primary btn-md" ng-click="edit($index)">
-                    <span class="glyphicon glyphicon-edit"></span>
-                </button>
-                </td>
-
-
-            </tr>
-        </table>
-</form>
-        <p><input type=button class = "btn btn-danger" value="Delete Book" ng-click="delete()"/></p>
 </div>
 
