@@ -13,6 +13,7 @@
     "angular": "^1.6.9",
     "angular-local-storage": "^0.7.1",
     "get-dependencies": "^1.1.0",
+    "ng2-router-modal": "0.0.8",
     "node": "^9.5.0"
   }
 }

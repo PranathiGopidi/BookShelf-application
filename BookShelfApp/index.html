@@ -1,50 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<!-- define angular app -->
+<html ng-app="myApp">
+
 <head>
-    <meta charset="UTF-8">
-    <title>BookShelf</title>
-    <style type="text/css">
-        h1 {
-            text-align: center;
-            }
-        .test{
-            color: floralwhite;
-        }
-    </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+    <!-- SPELLS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="script.js"></script>
+
+<style>
+    p{
+        color: crimson;
+        font-weight: bolder;
+        font-size: x-large;
+    }
+    p1{
+        font-weight: bold;
+        font-size: large;
+        color: indigo;
+    }
+</style>
 
 </head>
-<body ng-app="myApp" background="image3.jpg">
-<div align="center">
-    <h1><strong class="test">Welcome to BookShelf Application!!</strong></h1>
-    <br/>
-    <a href="Home.html"><input type=button class = "btn btn-primary" value="Home"/></a>
-    <br/>
-    <br/>
-    <a href="About.html"> <input type=button class = "btn btn-info" value="About"/></a>
+
+<!-- define angular controller -->
+<body  ng-controller="BooksCtrl" background="img1.jpg">
+<div align="right">
+    <a href="#"><button class="btn btn-primary" data-toggle="tooltip" title="Index"><span class="glyphicon glyphicon-th-list"></span></button> </a>
+    <a href="#About"> <button class="btn btn-primary" data-toggle="tooltip" title="About"><span class="glyphicon glyphicon-user"></span></button></a>
+    <a href="#Home"><button class="btn btn-primary" data-toggle="tooltip" title="Home"><span class="glyphicon glyphicon-home"></span></button></a>
 </div>
-<script>
-    var app = angular.module("myApp", ["ngRoute"]);
-    app.config(function($routeProvider) {
-        $routeProvider
-            .when("Home", {
-                templateUrl : "Home.htm"
-            })
-            .when("About", {
-                templateUrl : "About.htm"
-            })
-            .when("#/!",{
-                templateUrl : "wc.htm"
+<div align="center">
+    <p>
+        Welcome to BookShelf Application!!
+    </p>
+</div>
 
-            })
+<div id="main">
 
-    });
-</script>
+    <!-- angular templating -->
+    <!-- this is where content will be injected -->
+    <div ng-view></div>
+
+</div>
+
 </body>
+
 </html>
-
-
